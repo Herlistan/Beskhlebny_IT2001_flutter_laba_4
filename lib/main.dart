@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const MyHomePage(title: 'Общежитие КубГАУ'),
+      home: const MyHomePage(title: 'Общежития КубГАУ'),
     );
   }
 }
