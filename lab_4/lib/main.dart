@@ -89,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
             height: 85,
             child: Card(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
 
                 children: [
                   // ТЕЛЕФОН
