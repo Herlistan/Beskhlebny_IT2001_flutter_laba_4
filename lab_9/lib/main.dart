@@ -4,6 +4,13 @@ void main() {
   runApp(const MyApp());
 }
 
+class Machine{
+  static const int coffeeBeans = 250;
+  static const int milk = 250;
+  static const int water = 300;
+  static const int cash = 0;
+}
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
