@@ -1,4 +1,0 @@
-#Mon Apr 03 20:56:26 MSK 2023
-base.0=D\:\\gonvo\\flutter_laba_4\\lab_7\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-path.0=classes.dex
-renamed.0=classes.dex
