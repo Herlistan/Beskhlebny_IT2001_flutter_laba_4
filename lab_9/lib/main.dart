@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
+import 'classes/machine.dart';
+import 'classes/resources.dart';
+import 'enums.dart';
+import 'components/control_panel.dart';
+import 'components/display.dart';
 
 void main() {
   runApp(const MyApp());
-}
-
-class Machine{
-  static const int coffeeBeans = 250;
-  static const int milk = 250;
-  static const int water = 300;
-  static const int cash = 0;
 }
 
 class MyApp extends StatelessWidget {
@@ -36,38 +34,46 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
 
-  void _incrementCounter() {
+  Resources resources = Resources(300,300,300,300);
+  late Machine machine = Machine(resources);
+
+  int codecoffee = 0;
+  void _codecoffee(int value) {
     setState(() {
-      _counter++;
+      codecoffee = value;
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> widgetOptions = <Widget>[
+      Display(machine: machine),
+      ControlPanel(machine: machine),
+    ];
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text('Coffee Machine'),
+        backgroundColor: Colors.brown,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
+      body: IndexedStack(
+        index: codecoffee,
+        children: widgetOptions,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.coffee_maker),
+            label: 'Display',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.pest_control_sharp),
+            label: 'Control Panel',
+          ),
+        ],
+        currentIndex: codecoffee,
+        selectedItemColor: Colors.orange,
+        onTap: _codecoffee,
       ),
     );
   }
